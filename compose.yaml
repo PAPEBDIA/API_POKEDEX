@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: mariadb:lts
+    container_name: pokemon_db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+    volumes:
+      - "./pokemon/pokedex.sql:/docker-entrypoint-initdb.d/init.sql"
+      - "vdb:/var/lib/mysql"
+    
+  api:
+    build: .
+    container_name: pokemon-api
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  vdb:
