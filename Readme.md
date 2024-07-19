@@ -15,7 +15,7 @@
 
 2. Configure database connection
 
-   Pour configure le base de donnees, modifiez le fichier `.env` et mettez les informations de connexion à votre base de données.
+   Pour configurer la base de données, modifiez le fichier `.env` et mettez les informations de connexion à votre base de données.
    DB_HOST est le l'url de la base de données ou le nom du service de votre base de données dans le fichier `compose.yaml`
 
    ```
@@ -41,7 +41,7 @@
 
 5. Avec docker
 
-   Il y'a un fichier `compose.yaml` composait de 3 services :
+   Il y'a un fichier `compose.yaml` composé de 3 services :
 
    - db: service pour la base de données **MariaDB**
    - adminer: service pour une interface de gestion de la base de données
